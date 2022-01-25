@@ -1,5 +1,5 @@
 class Oystercard
-  
+  # constant
   MAXIMUM_BALANCE = 90
 
   attr_reader :balance
