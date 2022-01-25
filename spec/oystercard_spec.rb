@@ -26,6 +26,21 @@ describe Oystercard do
 
   end
 
+  it "checks if card is in journey" do 
+    oystercard = Oystercard.new
+    expect(oystercard.in_journey?).to eq(true) 
+  end
+
+  it "checks if touched in" do 
+    oystercard = Oystercard.new
+    expect(oystercard.touch_in).to eq(true)
+  end
+
+  it "checks if card touched out" do 
+    oystercard = Oystercard.new
+    expect(oystercard.touched_out).to eq(false)
+  end 
+
 
 
 
