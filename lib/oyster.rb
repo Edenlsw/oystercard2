@@ -3,6 +3,8 @@ class Oystercard
   MAXIMUM_BALANCE = 90
   MINIMUM_BALANCE = 1
 
+  MINIMUM_CHARGE = 1
+
   attr_reader :balance
   
   def initialize(balance = 0)
@@ -15,10 +17,6 @@ class Oystercard
     fail "#{@balance} cannot exceed #{MAXIMUM_BALANCE}" if (money + @balance) > MAXIMUM_BALANCE
     @balance += money
   end 
-
-  def deduct(money)
-    @balance -= money
-  end
 
   def in_journey?
     if @touched_in == true
@@ -37,9 +35,31 @@ class Oystercard
   end
 
   def touched_out
+    deduct(MINIMUM_CHARGE)
     @touched_in = false
+  end
+
+  # private
+  def deduct(money)
+    @balance -= money
   end
 
 
 end 
 
+
+
+
+
+
+=begin
+def return_bike(bike)
+  return raise("Capacity is full") unless not full?
+  @bikes << bike
+end
+
+private
+def full?
+  return true unless @bikes.length < capacity
+end
+=end

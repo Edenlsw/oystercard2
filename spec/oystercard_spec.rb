@@ -47,6 +47,11 @@ describe Oystercard do
     expect { oystercard.touch_in }.to raise_error "not enough money"
   end
 
+  # it 'charges for the journey' do
+  #   oystercard = Oystercard.new
+  #   expect {oystercard.touched_out}.to change{oystercard.balance}.by(-1)
+  # end
+
 
 
 
