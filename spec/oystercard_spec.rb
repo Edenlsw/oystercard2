@@ -27,13 +27,13 @@ describe Oystercard do
   end
 
   it "checks if card is in journey" do 
-    oystercard = Oystercard.new
+    oystercard = Oystercard.new(10)
     oystercard.touch_in
     expect(oystercard.in_journey?).to eq(true) 
   end
 
   it "checks if touched in" do 
-    oystercard = Oystercard.new
+    oystercard = Oystercard.new(5)
     expect(oystercard.touch_in).to eq(true)
   end
 
@@ -42,13 +42,22 @@ describe Oystercard do
     expect(oystercard.touched_out).to eq(false)
   end 
 
-  # it "checks if you have the minimum balance" do 
+  it "checks if you have the minimum balance" do 
+    oystercard = Oystercard.new
+    expect { oystercard.touch_in }.to raise_error "not enough money"
+  end
+
+
+
+
+
+
+
+  # it "checks if you have the minimum balance" do
   #   oystercard = Oystercard.new
-  #   expect(oystercard.touched_in).to raise_error "not enough money"
-  # end
-
-
-
-
+  #   minimum_balance = Oystercard::MINIMUM_BALANCE
+  #   oystercard.balance
+  #   expect { oystercard.touch_in }.to raise_error "#{oystercard.balance} below #{minimum_balance}"
+  # end 
 
 end 

@@ -1,6 +1,7 @@
 class Oystercard
   # constant
   MAXIMUM_BALANCE = 90
+  MINIMUM_BALANCE = 1
 
   attr_reader :balance
   
@@ -30,6 +31,8 @@ class Oystercard
 
 
   def touch_in
+    raise "not enough money" if @balance < MINIMUM_BALANCE
+
     @touched_in = true
   end
 
