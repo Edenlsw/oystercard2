@@ -28,7 +28,6 @@ class Oystercard
 
   end
 
-  end
 
   def touch_in
     @touched_in = true
@@ -37,8 +36,6 @@ class Oystercard
   def touched_out
     @touched_in = false
   end
-
-
 
 
 end 
