@@ -21,8 +21,10 @@ describe Oystercard do
 
   it "can deduct money" do
     oystercard = Oystercard.new
-    oystercard.deduct(10)
-    expect(oystercard.deduct(1)).to eq(-11)
+    # no longer needed code
+    # oystercard:deduct(10)
+    # expect(oystercard.deduct(1)).to eq(-11)
+    expect ( oystercard.send(:deduct) )
 
   end
 
@@ -47,10 +49,19 @@ describe Oystercard do
     expect { oystercard.touch_in }.to raise_error "not enough money"
   end
 
-  # it 'charges for the journey' do
-  #   oystercard = Oystercard.new
-  #   expect {oystercard.touched_out}.to change{oystercard.balance}.by(-1)
-  # end
+  it 'charges for the journey' do
+    oystercard = Oystercard.new
+    # oystercard.send(:deduct(5))
+    # deduct = oystercard:deduct(5)
+
+
+    # expect {oystercard.touched_out}.to change{oystercard.balance}.by(deduct)
+
+    # expect {oystercard.send(:deduct(5))}.to change{oystercard.balance}.by(5)
+
+    expect {oystercard.touched_out}.to change{oystercard.balance}.by(oystercard.send(:deduct))
+
+  end
 
 
 
