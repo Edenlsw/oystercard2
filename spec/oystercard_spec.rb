@@ -51,14 +51,6 @@ describe Oystercard do
 
   it 'charges for the journey' do
     oystercard = Oystercard.new
-    # oystercard.send(:deduct(5))
-    # deduct = oystercard:deduct(5)
-
-
-    # expect {oystercard.touched_out}.to change{oystercard.balance}.by(deduct)
-
-    # expect {oystercard.send(:deduct(5))}.to change{oystercard.balance}.by(5)
-
     expect {oystercard.touched_out}.to change{oystercard.balance}.by(oystercard.send(:deduct))
 
   end
@@ -69,11 +61,6 @@ describe Oystercard do
 
 
 
-  # it "checks if you have the minimum balance" do
-  #   oystercard = Oystercard.new
-  #   minimum_balance = Oystercard::MINIMUM_BALANCE
-  #   oystercard.balance
-  #   expect { oystercard.touch_in }.to raise_error "#{oystercard.balance} below #{minimum_balance}"
-  # end 
+  
 
 end 
